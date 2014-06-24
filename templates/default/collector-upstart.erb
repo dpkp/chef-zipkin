@@ -1,0 +1,3 @@
+chdir <%= node[:zipkin][:install_path] %>/zipkin-collector-service-<%= node[:zipkin][:version] %>/
+
+exec java -cp libs -jar zipkin-collector-service-<%= node[:zipkin][:version] %>.jar -f config/collector-<%= node[:zipkin][:config] %>.scala

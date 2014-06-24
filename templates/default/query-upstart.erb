@@ -1,0 +1,3 @@
+chdir <%= node[:zipkin][:install_path] %>/zipkin-query-service-<%= node[:zipkin][:version] %>/
+
+exec java -cp libs -jar zipkin-query-service-<%= node[:zipkin][:version] %>.jar -f config/query-<%= node[:zipkin][:config] %>.scala

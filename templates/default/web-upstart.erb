@@ -1,0 +1,3 @@
+chdir <%= node[:zipkin][:install_path] %>/zipkin-web-<%= node[:zipkin][:version] %>/
+
+exec java -cp libs -jar zipkin-web-<%= node[:zipkin][:version] %>.jar -f config/web-<%= node[:zipkin][:config] %>.scala -D env=production

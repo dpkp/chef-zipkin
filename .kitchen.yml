@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+  customize:
+    memory: 4096
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+    run_list:
+      - recipe[apt]
+
+suites:
+  - name: default
+    run_list:
+      - recipe[java]
+      - recipe[zipkin]
+    attributes:
+      java:
+        jdk_version: 7

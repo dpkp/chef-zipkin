@@ -1,0 +1,8 @@
+import com.twitter.finagle.zipkin.thrift.ZipkinTracer
+import com.twitter.zipkin.builder.{QueryClient, WebBuilder}
+import java.net.{InetSocketAddress, InetAddress}
+
+val queryClient = QueryClient.static(new InetSocketAddress("<%= node[:zipkin][:query_host] %>", <%= node[:zipkin][:query_port] %>)) map {
+  _.tracer(ZipkinTracer.mk())
+}
+WebBuilder("http://<%= node['fqdn'] %>:<%= node[:zipkin][:web_port] %>/", queryClient)
